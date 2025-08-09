@@ -1,0 +1,81 @@
+.tudo {
+    position: relative;
+    height: 100vh;
+    
+  }
+
+.titulo{
+  font-size: 40px;
+}
+  
+.fundo {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("../assets/bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: 1;
+}
+.box{
+  background-color: rgb(255, 255, 255);
+  width: 30%;
+  height: 55%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 55px;
+  padding-top: 4vh;
+  box-shadow: 15px 10px rgba(0, 0, 0, 0.255);
+  
+}
+.quaseTudo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6vh;
+  row-gap: 10vh;
+  width: 100%;
+}
+.campo {
+  border: 0cap;
+  background-color: rgb(221, 221, 221);
+  border-radius: 2vh;
+  height: 5vh;
+  width: 70%;
+  margin: auto;
+  font-size: 25px;
+  padding-left: 15px;
+}
+
+.campobotoes{
+  display: flex;
+  justify-content: center;
+}
+
+.campobotoes2{
+  background-color: var(--branco);
+  border-radius: 15px;
+  margin: 2% 1%;
+}
+
+.botao{
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  margin: auto;
+  width: 40%;
+  height: 100%;
+  font-size: 20px;
+  color: var(--azul-escuro);
+  background-color: var(--azul-claro);
+
+}
+
+  

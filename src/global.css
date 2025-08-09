@@ -1,0 +1,12 @@
+:root {
+    --azul-claro: #7ebec4;
+    --azul-escuro: #2f7980;
+    --preto: #000;
+    --branco: #fff;
+    
+}
+
+*{
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 500;
+}
