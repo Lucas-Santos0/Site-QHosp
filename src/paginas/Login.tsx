@@ -14,8 +14,6 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-console.log("usuario.login@gmail.com\n123321");
-
 export function Login() {
   const {
     register,
