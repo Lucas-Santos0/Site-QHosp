@@ -3,7 +3,7 @@ import estilos from './Cadastro.module.css'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 
@@ -35,13 +35,14 @@ export function Cadastro() {
 
   async function cadastrarUsuario(data: FormData) {
      try {
-    const docRef = await addDoc(collection(db, "usuarios"), {
-      nome: data.nome,
-      cpf: data.cpf,
-      email: data.email,
-      senha: data.senha
+    const cpf = data.cpf.replace(/\D/g, ''); // remove pontos e traços  
+    await setDoc(doc(db, "Usuarios", cpf), {
+      Nome: data.nome,
+      CPF: data.cpf,
+      Email: data.email,
+      Senha: data.senha
     });
-    console.log("Documento salvo com ID:", docRef.id);
+    console.log("Documento salvo com ID:", cpf);
     alert("Cadastro realizado com sucesso!")
   } catch (e) {
     console.error("Erro ao adicionar documento:", e);

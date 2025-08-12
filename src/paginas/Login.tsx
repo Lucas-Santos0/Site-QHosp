@@ -28,14 +28,14 @@ export function Login() {
 
   async function Verificacao(data: FormData) {
     try {
-      const querySnapshot = await getDocs(collection(db, "usuarios"));
+      const querySnapshot = await getDocs(collection(db, "Usuarios"));
 
       let usuarioEncontrado = false;
 
       querySnapshot.forEach((doc) => {
         const usuario = doc.data();
 
-        if (usuario.email === data.email && usuario.senha === data.senha) {
+        if (usuario.Email === data.email && usuario.Senha === data.senha) {
           usuarioEncontrado = true;
         }
       });

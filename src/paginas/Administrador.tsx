@@ -3,6 +3,8 @@ import { useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const schema = z.object({
   email: z.string(),
@@ -27,13 +29,34 @@ export function Administrador(){
   const navegação = useNavigate()
 
 
-  function Autenticação(data: FormData){
-     
-    if (data.email !== "empresa.login@gmail.com" || data.senha !== "123321") {
-  alert("email ou senha inválidos");
-  } else {
-  navegação("/sobre");
-  }
+  async function Verificacao(data: FormData){
+
+  try {
+      const querySnapshot = await getDocs(collection(db, "usuarios"));
+
+      let devEncontrado = false;
+
+      querySnapshot.forEach((doc) => {
+        const desenvolvedores = doc.data();
+
+        if (desenvolvedores.email === data.email && desenvolvedores.senha === data.senha) {
+          devEncontrado = true;
+        }
+      });
+
+      if (devEncontrado) {
+        navegação("/sobre");
+      } else {
+        alert("email ou senha inválidos");
+      }
+
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error);
+    }
+
+
+
+
 
   }
 
@@ -47,7 +70,7 @@ export function Administrador(){
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
           <div className={estilos.titulo}>Administrador </div>
-          <form className={estilos.formulario} onSubmit={handleSubmit(Autenticação)}>
+          <form className={estilos.formulario} onSubmit={handleSubmit(Verificacao)}>
             <input className={estilos.campo}
               type="text"
               placeholder="Email:"  
