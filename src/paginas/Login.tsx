@@ -4,12 +4,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const schema = z.object({
-  email: z.string(),
-  senha: z.string(),
+  email: z.string().email("Email inválido"),
+  senha: z.string().min(6, "Senha inválida"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -18,8 +19,8 @@ export function Login() {
   const {
     register,
     handleSubmit,
-    formState: {},
     reset,
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -28,26 +29,34 @@ export function Login() {
 
   async function Verificacao(data: FormData) {
     try {
-      const querySnapshot = await getDocs(collection(db, "Usuarios"));
+      // Login com Firebase Auth
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.senha);
+      const user = userCredential.user;
 
-      let usuarioEncontrado = false;
+      // Busca o documento do usuário no Firestore
+      const docRef = doc(db, "Usuarios", user.uid);
+      const docSnap = await getDoc(docRef);
 
-      querySnapshot.forEach((doc) => {
-        const usuario = doc.data();
+      if (docSnap.exists()) {
+        const dadosUsuario = docSnap.data();
 
-        if (usuario.Email === data.email && usuario.Senha === data.senha) {
-          usuarioEncontrado = true;
+        // Redireciona conforme o campo 'adm'
+        if (dadosUsuario.adm === true) {
+          navegação("/administrador");
+        } else {
+          navegação("/inicial");
         }
-      });
-
-      if (usuarioEncontrado) {
-        navegação("/sobre");
       } else {
-        alert("email ou senha inválidos");
+        alert("Usuário não encontrado no banco.");
       }
 
-    } catch (error) {
-      console.error("Erro ao buscar dados:", error);
+    } catch (error: any) {
+      console.error("Erro ao fazer login:", error);
+      if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+        alert("Email ou senha inválidos.");
+      } else {
+        alert("Erro ao fazer login. Tente novamente.");
+      }
     }
   }
 
@@ -65,6 +74,7 @@ export function Login() {
               placeholder="Email:"
               {...register("email")}
             />
+            <p className={estilos.mensagemErro}>{errors.email?.message || "‎"}</p>
 
             <input
               className={estilos.campo}
@@ -72,6 +82,7 @@ export function Login() {
               placeholder="Senha:"
               {...register("senha")}
             />
+            <p className={estilos.mensagemErro}>{errors.senha?.message || "‎"}</p>
 
             <div className={estilos.campobotoes}>
               <button

@@ -70,6 +70,8 @@ export function Administrador(){
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
           <div className={estilos.titulo}>Administrador </div>
+          colocar cadastro de hospital
+          grade hospitalar
           <form className={estilos.formulario} onSubmit={handleSubmit(Verificacao)}>
             <input className={estilos.campo}
               type="text"

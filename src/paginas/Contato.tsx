@@ -12,17 +12,17 @@ export function Contato(){
           <div className={estilos.titulo}>Contato </div>
           <form className={estilos.formulario}>
             <input className={estilos.campo}
-              placeholder="Assunto:"  />
+              placeholder="Email:"  />
 
             <input className={estilos.campo}
-              placeholder="Email:"  />
+              placeholder="Assunto:"  />
 
             <textarea className={estilos.mensagem}
               placeholder="Mensagem:"  />
 
             <div className={estilos.campobotoes}>
               <button className={estilos.botao}><div className={estilos.campobotoes2}>Limpar</div></button>
-              <button className={estilos.botao}>Entrar</button>
+              <button className={estilos.botao}>Enviar</button>
             </div>
               
 
