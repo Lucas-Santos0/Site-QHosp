@@ -20,14 +20,14 @@
 .box{
   background-color: rgb(255, 255, 255);
   width: 30%;
-  height: 80%;
+  height: 55%;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 55px;
   padding-top: 4vh;
   box-shadow: 15px 10px rgba(0, 0, 0, 0.255);
-  z-index: 1;
   
 }
 .quaseTudo {
@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 6vh;
-  row-gap: 2vh;
+  row-gap: 10vh;
   width: 100%;
 }
 .campo {
@@ -58,8 +58,6 @@
 .campobotoes{
   display: flex;
   justify-content: center;
-  margin-top: 5%;
-
 }
 
 .campobotoes2{
@@ -77,33 +75,7 @@
   font-size: 20px;
   color: var(--azul-escuro);
   background-color: var(--azul-claro);
+
 }
 
-
-.grupoCampo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 9vh;
-  justify-content: space-between;
-}
-
-.mensagemErro {
-  font-size: 14px;
-  color: red;
-  height: 1.6em;
-  line-height: 1.6em;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-.voltar{
-  z-index: 1;
-  position: absolute;
-  width: 7%;
-  height: 7%;
-  text-decoration: none;
-  color: #000000;
-}
-
+  

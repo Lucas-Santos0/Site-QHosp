@@ -1,35 +1,48 @@
-.geral{
-    width: 100vw;
-    height: 15%;
-    background-color: hsla(0, 0%, 0%, 0.468); 
-    position: absolute;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 5px;
+
+.geral {
+  width: 95vw;
+  height: 15%;
+  background-color: hsla(0, 0%, 0%, 0.704); 
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
 }
 
-.links{
-    display: flex;
-    width: 50%;
-    
+/* Deixa a logo alinhada à esquerda */
+.logo img {
+  height: 50px; /* Ajuste conforme necessário */
 }
 
-.link{
-    text-decoration: none;
-    color: var(--preto);
-    text-align: center;
-    margin: auto;
-    font-size: 30px;
+/* Menu de links centralizado */
+.links {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex: 1;
 }
 
-.linkActive{
-    color: var(--preto);
-    text-align: center;
-    margin: auto;
-    font-size: 30px;
-    text-decoration: underline;
-    text-underline-offset: 15px;
-    text-decoration-thickness: 4px;
+/* Alinhamento do botão sair */
+.sair button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Estilos dos links */
+.link, .linkActive {
+  text-decoration: none;
+  color: var(--preto);
+  font-size: 18px;
+}
+
+.linkActive {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 

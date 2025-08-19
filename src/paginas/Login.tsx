@@ -55,7 +55,7 @@ export function Login() {
       if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
         alert("Email ou senha inválidos.");
       } else {
-        alert("Erro ao fazer login. Tente novamente.");
+        alert("Erro ao fazer login. Verifique suas credenciais ou Tente novamente mais tarde.");
       }
     }
   }

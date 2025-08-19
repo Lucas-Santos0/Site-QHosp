@@ -3,10 +3,12 @@ import {Login} from '../paginas/Login'
 import {Cadastro} from '../paginas/Cadastro'
 import {Sobre} from '../paginas/Sobre'
 import {Contato} from '../paginas/Contato'
-import { Inicial } from '../paginas/Inicial'    
+import { Inicial } from '../paginas/Inicial'   
+import { Ficha_medica } from '../paginas/Ficha_medica' 
 import { Administrador } from '../paginas/Administrador'
 import { Navbar } from '../componentes/Navbar'
 import { Outlet } from 'react-router-dom';
+
 
 //mostrar navbar
 export function ComNavbar() {
@@ -33,6 +35,7 @@ export function Rotas(){
           <Route path='/sobre' element={<Sobre />} />
           <Route path='/contato' element={<Contato/>} />
           <Route path='/administrador' element={<Administrador/>} />
+          <Route path='/ficha' element={<Ficha_medica/>} />
         </Route>
       </Routes>
     </BrowserRouter>

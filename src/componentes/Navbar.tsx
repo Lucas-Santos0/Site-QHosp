@@ -21,13 +21,17 @@ export function Navbar(){
     return(
         
         <div className={estilos.geral}>
+          <div className={estilos.logo}>
             <img src={logo} alt="Logo" />
+          </div>
                 <div className={estilos.links}>
                     <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/inicial'}>Inicio</NavLink> 
                     <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/sobre'}>Sobre</NavLink>  
                     <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/contato'}>Contato</NavLink> 
-                    <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={''}>Configuração</NavLink>  
-                    <button onClick={deslogar}>Sair</button>
+                    <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/ficha'}>Configuração</NavLink>  
+                </div>
+                <div className={estilos.sair}>
+                  <button onClick={deslogar}>Sair</button>
                 </div>
         </div>
 

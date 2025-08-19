@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from "firebase/firestore";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 const schema = z.object({
@@ -71,7 +72,8 @@ export function Cadastro() {
   return (
     <div className={estilos.tudo}>
       <div className={estilos.fundo} />
-      <button className={estilos.voltar} onClick={() => navegação("/")}>Voltar</button>
+              <NavLink to={'/'}><FaArrowLeft  className={estilos.voltar}/></NavLink>
+
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
           <div className={estilos.titulo}>Cadastro</div>
@@ -108,6 +110,7 @@ export function Cadastro() {
                 <div className={estilos.campobotoes2}>Limpar</div>
               </button>
               <button type="submit" className={estilos.botao}>Cadastrar</button>
+
             </div>
 
           </form>
