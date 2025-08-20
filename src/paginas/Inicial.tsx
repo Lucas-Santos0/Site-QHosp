@@ -100,12 +100,12 @@ export function Inicial() {
           <div className={estilos.titulo}>Inicial</div>
 
           <form onSubmit={handleSubmit(verificarEstabelecimentoPorMunicipio)}>
-            <textarea {...register("localizacao")} placeholder="Digite o município"></textarea>
-            <button type="submit">Buscar</button>
+            <textarea className={estilos.areaTexto} {...register("localizacao")} placeholder="Digite o município"></textarea>
+            <button className={estilos.buscar} type="submit">Buscar</button>
           </form>
           <form onSubmit={handleSubmit(verificarEstabelecimentoPorNome)}>
-            <textarea {...register("nome")} placeholder="Digite o nome do estabelecimento"></textarea>
-            <button type="submit">Buscar</button>
+            <textarea className={estilos.areaTexto} {...register("nome")} placeholder="Digite o nome do estabelecimento"></textarea>
+            <button className={estilos.buscar} type="submit">Buscar</button>
           </form>
 
           {erro && <p style={{ color: 'red' }}>{erro}</p>}

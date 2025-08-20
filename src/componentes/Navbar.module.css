@@ -2,7 +2,7 @@
 .geral {
   width: 95vw;
   height: 15%;
-  background-color: hsla(0, 0%, 0%, 0.704); 
+  background-color: hsla(0, 0%, 0%, 0.473); 
   position: absolute;
   z-index: 2;
   display: flex;
@@ -13,7 +13,7 @@
 
 /* Deixa a logo alinhada à esquerda */
 .logo img {
-  height: 50px; /* Ajuste conforme necessário */
+  height: 80px; /* Ajuste conforme necessário */
 }
 
 /* Menu de links centralizado */
