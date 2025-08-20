@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-
+public/cnes_estabelecimentos35.json
 
 
 # Editor directories and files
