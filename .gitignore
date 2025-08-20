@@ -12,8 +12,8 @@ dist
 dist-ssr
 *.local
 
-public/cnes_estabelecimentos.json
-public/cnes_estabelecimentos.rar
+
+
 
 # Editor directories and files
 .vscode/*

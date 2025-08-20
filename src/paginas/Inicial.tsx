@@ -56,7 +56,7 @@ export function Inicial() {
       }
 
       // 3️⃣ Buscar hospitais CNES
-      const respostaJSON = await fetch('/cnes_estabelecimentos.json');
+      const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
       const respostaJS: Hospital[] = await respostaJSON.json();
 
       // 4️⃣ Ajustar código IBGE para 6 dígitos (CNES não tem dígito verificador)
@@ -78,7 +78,7 @@ export function Inicial() {
 
   async function verificarEstabelecimentoPorNome(data: FormData){
     try{
-      const respostaJSON = await fetch('/cnes_estabelecimentos.json');
+      const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
       const respostaJS: Hospital[] = await respostaJSON.json();
 
       const hospitalFiltrado = respostaJS.find(hospital =>
