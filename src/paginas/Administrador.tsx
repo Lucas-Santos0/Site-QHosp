@@ -70,25 +70,7 @@ export function Administrador(){
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
           <div className={estilos.titulo}>Administrador </div>
-          colocar cadastro de hospital
-          grade hospitalar
-          <form className={estilos.formulario} onSubmit={handleSubmit(Verificacao)}>
-            <input className={estilos.campo}
-              type="text"
-              placeholder="Email:"  
-              {...register("email")}/>
-              
-            <input className={estilos.campo}
-              type="password"
-              placeholder="Senha:"
-              {...register("senha")}/>
-              
-
-            <div className={estilos.campobotoes}>
-              <button className={estilos.botao}  type="button" onClick={() => reset()}><div className={estilos.campobotoes2}>Limpar</div></button>
-              <button className={estilos.botao} type="submit">Entrar</button>
-            </div>
-          </form>
+          
           
         </div>
       </div>

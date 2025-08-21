@@ -27,7 +27,7 @@ export function Login() {
 
   const navegação = useNavigate();
 
-  async function Verificacao(data: FormData) {
+  /*async function Verificacao(data: FormData) {
     try {
       // Login com Firebase Auth
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.senha);
@@ -57,8 +57,20 @@ export function Login() {
       } else {
         alert("Erro ao fazer login. Verifique suas credenciais ou Tente novamente mais tarde.");
       }
-    }
+    }*/
+
+  function Verificacao(data: FormData) {
+  const { email, senha } = data;
+
+  if (email === "qhospp@gmail.com" && senha === "QHosp123") {
+    navegação('/administrador');
+  } else if (email === "usuario@gmail.com" && senha === "123456") {
+    navegação('/Inicial');
+  }else{
+    alert("Email ou senha incorretos");
   }
+}
+
 
   return (
     <div className={estilos.tudo}>

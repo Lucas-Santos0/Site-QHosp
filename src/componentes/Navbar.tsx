@@ -29,6 +29,8 @@ export function Navbar(){
                     <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/sobre'}>Sobre</NavLink>  
                     <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/contato'}>Contato</NavLink> 
                     <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/ficha'}>Configuração</NavLink>  
+                    <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/Administrador'}>Administrador</NavLink>  
+
                 </div>
                 <div className={estilos.sair}>
                   <button onClick={deslogar}>Sair</button>
