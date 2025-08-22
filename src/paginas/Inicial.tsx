@@ -33,10 +33,11 @@ export function Inicial() {
 
   // Função para normalizar strings (remove acentos e transforma em minúsculas)
   function normalizar(str: string) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    return str.normalize("NFD").replace(/\s+/g, "").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    
   }
 
-  async function verificarEstabelecimentoPorMunicipio(data: FormData) {
+/*  async function verificarEstabelecimentoPorMunicipio(data: FormData) {
     console.log('Município digitado:', data.localizacao);
 
     try {
@@ -67,7 +68,7 @@ export function Inicial() {
         hospital.CO_IBGE === codigoCNES
       );
 
-      console.log("Hospitais filtrados:", hospitaisFiltrados.slice(0, 20));
+      console.log("Hospitais filtrados:", hospitaisFiltrados);
       setEstabelecimentos(hospitaisFiltrados);
 
     } catch (erro) {
@@ -81,13 +82,101 @@ export function Inicial() {
       const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
       const respostaJS: Hospital[] = await respostaJSON.json();
 
-      const hospitalFiltrado = respostaJS.find(hospital =>
-        hospital.NO_FANTASIA === data.nome
+      const hospitalFiltrado = respostaJS.filter(hospital =>
+      normalizar(hospital.NO_FANTASIA || "").includes(normalizar(data.nome))
       );
-      console.log(hospitalFiltrado)
+      if (hospitalFiltrado != undefined){
+        console.log(hospitalFiltrado)
+      }
+      else{
+        console.log("hospital não encontrado")
+      }
     }
     catch{
+      console.log("erro inesperado")
+    }
+  }*/
 
+    async function verificarEstabelecimento(data: FormData){
+    try{
+
+      if(data.localizacao == "" && data.nome !== ""){
+        const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
+        const respostaJS: Hospital[] = await respostaJSON.json();
+
+        const hospitalFiltrado = respostaJS.filter(hospital =>
+        normalizar(hospital.NO_FANTASIA || "").includes(normalizar(data.nome))
+        );
+        if (hospitalFiltrado.length > 0 || hospitalFiltrado == undefined) {
+          console.log(hospitalFiltrado);
+        } else {
+          console.log("hospital não encontrado");
+        }
+      }
+      else if(data.localizacao !== "" && data.nome == ""){
+        // 1️⃣ Buscar municípios do IBGE
+      const resposta = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/municipios');
+      const municipios: Municipio[] = await resposta.json();
+
+      // 2️⃣ Encontrar município pelo nome (normalizando acentos)
+      const municipio = municipios.find(
+        (m) => normalizar(m.nome) === normalizar(data.localizacao)
+      );
+
+      if (!municipio) {
+        setErro("Município não encontrado");
+        setEstabelecimentos([]);
+        return;
+      }
+
+      // 3️⃣ Buscar hospitais CNES
+      const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
+      const respostaJS: Hospital[] = await respostaJSON.json();
+
+      // 4️⃣ Ajustar código IBGE para 6 dígitos (CNES não tem dígito verificador)
+      const codigoCNES = String(Math.floor(municipio.id / 10));
+
+      // 5️⃣ Filtrar hospitais do município
+      const hospitaisFiltrados = respostaJS.filter(hospital =>
+        hospital.CO_IBGE === codigoCNES
+      );
+
+      console.log("Hospitais filtrados:", hospitaisFiltrados);
+      setEstabelecimentos(hospitaisFiltrados);
+      }
+
+      else if(data.localizacao !== "" && data.nome !== ""){
+        const resposta = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/municipios');
+      const municipios: Municipio[] = await resposta.json();
+
+      // 2️⃣ Encontrar município pelo nome (normalizando acentos)
+      const municipio = municipios.find(
+        (m) => normalizar(m.nome) === normalizar(data.localizacao)
+      );
+
+      if (!municipio) {
+        setErro("Município não encontrado");
+        setEstabelecimentos([]);
+        return;
+      }
+        const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
+      const respostaJS: Hospital[] = await respostaJSON.json();
+
+      // 4️⃣ Ajustar código IBGE para 6 dígitos (CNES não tem dígito verificador)
+      const codigoCNES = String(Math.floor(municipio.id / 10));
+
+      // 5️⃣ Filtrar hospitais do município
+      const hospitaisFiltrados = respostaJS.filter(hospital =>
+        hospital.CO_IBGE === codigoCNES && normalizar(hospital.NO_FANTASIA || "").includes(normalizar(data.nome))
+      );
+
+      console.log("Hospitais filtrados:", hospitaisFiltrados);
+      setEstabelecimentos(hospitaisFiltrados);
+      }
+
+    }
+    catch{
+      console.log("erro inesperado")
     }
   }
 
@@ -99,11 +188,9 @@ export function Inicial() {
         <div className={estilos.box}>
           <div className={estilos.titulo}>Inicial</div>
 
-          <form onSubmit={handleSubmit(verificarEstabelecimentoPorMunicipio)}>
-            <textarea className={estilos.areaTexto} {...register("localizacao")} placeholder="Digite o município"></textarea>
-            <button className={estilos.buscar} type="submit">Buscar</button>
-          </form>
-          <form onSubmit={handleSubmit(verificarEstabelecimentoPorNome)}>
+          <form onSubmit={handleSubmit(verificarEstabelecimento)}>
+            <textarea className={estilos.areaTexto} {...register("localizacao")} placeholder="Digite o nome do municipio"></textarea>
+          
             <textarea className={estilos.areaTexto} {...register("nome")} placeholder="Digite o nome do estabelecimento"></textarea>
             <button className={estilos.buscar} type="submit">Buscar</button>
           </form>
