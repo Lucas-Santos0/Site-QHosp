@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
+
 const schema = z.object({
   email: z.string().email("Email inválido"),
   senha: z.string().min(6, "Senha inválida"),
@@ -59,19 +60,6 @@ export function Login() {
       }
     }
   }
-/*
-  function Verificacao(data: FormData) {
-  const { email, senha } = data;
-
-  if (email === "qhospp@gmail.com" && senha === "QHosp123") {
-    navegação('/administrador');
-  } else if (email === "usuario@gmail.com" && senha === "123456") {
-    navegação('/Inicial');
-  }else{
-    alert("Email ou senha incorretos");
-  }
-}*/
-
 
   return (
     <div className={estilos.tudo}>

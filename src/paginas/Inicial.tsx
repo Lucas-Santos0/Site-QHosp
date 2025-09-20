@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { BsHospital } from 'react-icons/bs';
 
 export function Inicial() {
   const schema = z.object({
@@ -28,7 +27,6 @@ export function Inicial() {
     resolver: zodResolver(schema),
   });
 
-  const [estabelecimentos, setEstabelecimentos] = useState<Hospital[]>([]);
   const [erro, setErro] = useState('');
 
   // Função para normalizar strings (remove acentos e transforma em minúsculas)
@@ -52,7 +50,6 @@ export function Inicial() {
 
       if (!municipio) {
         setErro("Município não encontrado");
-        setEstabelecimentos([]);
         return;
       }
 
@@ -69,7 +66,6 @@ export function Inicial() {
       );
 
       console.log("Hospitais filtrados:", hospitaisFiltrados);
-      setEstabelecimentos(hospitaisFiltrados);
 
     } catch (erro) {
       setErro(`A busca falhou! Erro: ${erro}`);
@@ -125,7 +121,6 @@ export function Inicial() {
 
       if (!municipio) {
         setErro("Município não encontrado");
-        setEstabelecimentos([]);
         return;
       }
 
@@ -142,7 +137,6 @@ export function Inicial() {
       );
 
       console.log("Hospitais filtrados:", hospitaisFiltrados);
-      setEstabelecimentos(hospitaisFiltrados);
       }
 
       else if(data.localizacao !== "" && data.nome !== ""){
@@ -156,7 +150,6 @@ export function Inicial() {
 
       if (!municipio) {
         setErro("Município não encontrado");
-        setEstabelecimentos([]);
         return;
       }
         const respostaJSON = await fetch('/cnes_estabelecimentos35.json');
@@ -171,7 +164,6 @@ export function Inicial() {
       );
 
       console.log("Hospitais filtrados:", hospitaisFiltrados);
-      setEstabelecimentos(hospitaisFiltrados);
       }
 
     }

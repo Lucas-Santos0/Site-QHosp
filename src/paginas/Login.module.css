@@ -1,11 +1,13 @@
 .tudo {
     position: relative;
     height: 100vh;
-    
-  }
+    min-height: 600px;
+}
 
 .titulo{
   font-size: 40px;
+  text-align: center;
+  margin-bottom: 1rem;
 }
   
 .fundo {
@@ -16,67 +18,81 @@
     background-position: center;
     filter: blur(8px);
     z-index: 1;
-    
 }
+
 .box{
   background-color: rgb(255, 255, 255);
-  width: 30%;
-  height: 55%;
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 55px;
-  padding-top: 4vh;
+  padding: 2rem;
   box-shadow: 15px 10px rgba(0, 0, 0, 0.255);
-  
+  position: relative;
+  margin-top: 100px;
 }
+
 .quaseTudo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 20px;
 }
 
 .formulario {
   display: flex;
   flex-direction: column;
-  padding-top: 6vh;
+  padding-top: 2rem;
   width: 100%;
+  gap: 1rem;
 }
+
 .campo {
-  border: 0cap;
+  border: 0;
   background-color: rgb(221, 221, 221);
   border-radius: 2vh;
-  height: 5vh;
-  width: 70%;
-  margin: auto;
-  font-size: 25px;
-  padding-left: 15px;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  font-size: 16px;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .campobotoes{
   display: flex;
   justify-content: center;
-  margin-top: 5%;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .campobotoes2{
   background-color: var(--branco);
   border-radius: 15px;
-  margin: 2% 1%;
+  margin: 0;
 }
 
 .botao{
   border-radius: 15px;
-  border-color: rgba(255, 255, 255, 0);
-  margin: auto;
-  width: 40%;
-  height: 100%;
-  font-size: 20px;
+  border: none;
+  margin: 0;
+  width: 120px;
+  height: 45px;
+  font-size: 16px;
   color: var(--azul-escuro);
   background-color: var(--azul-claro);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.botao:hover {
+  background-color: var(--azul-escuro);
+  color: white;
 }
 
 .cadastro{
@@ -84,23 +100,135 @@
   bottom: 20px;
   right: 20px;
   z-index: 2;
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
-  flex-direction: column;    /* Agora ícone fica em cima do texto */
-  align-items: center;       /* Centraliza horizontalmente */
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: #000000;
-  gap: 4px;       
+  gap: 4px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .iconeCadastro{
- width: 50%;
- height: 50%;
- margin: auto;
+ width: 30px;
+ height: 30px;
 }
 
 .mensagemErro{
   color: rgb(255, 0, 0);
   text-align: center;
+  font-size: 14px;
+  margin: 0;
+  min-height: 20px;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 1024px) {
+  .box {
+    max-width: 350px;
+    padding: 1.5rem;
+  }
+  
+  .titulo {
+    font-size: 35px;
+  }
+  
+  .campo {
+    font-size: 15px;
+    height: 45px;
+  }
+  
+  .botao {
+    font-size: 15px;
+    width: 110px;
+    height: 40px;
+  }
+  
+  .cadastro {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    max-width: 90%;
+    padding: 1rem;
+    margin-top: 80px;
+    border-radius: 30px;
+  }
+  
+  .titulo {
+    font-size: 30px;
+  }
+  
+  .campo {
+    font-size: 14px;
+    height: 40px;
+  }
+  
+  .botao {
+    font-size: 14px;
+    width: 100px;
+    height: 35px;
+  }
+  
+  .cadastro {
+    font-size: 16px;
+    bottom: 15px;
+    right: 15px;
+    padding: 8px;
+  }
+  
+  .iconeCadastro {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .quaseTudo {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 60px;
+    border-radius: 20px;
+  }
+  
+  .titulo {
+    font-size: 24px;
+  }
+  
+  .campo {
+    font-size: 13px;
+    height: 35px;
+  }
+  
+  .botao {
+    font-size: 13px;
+    width: 90px;
+    height: 30px;
+  }
+  
+  .cadastro {
+    font-size: 14px;
+    bottom: 10px;
+    right: 10px;
+    padding: 6px;
+  }
+  
+  .iconeCadastro {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .quaseTudo {
+    padding: 10px;
+  }
 }
   

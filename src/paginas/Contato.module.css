@@ -1,11 +1,13 @@
 .tudo {
     position: relative;
-    height: 110vh;
-    
-  }
+    height: 100vh;
+    min-height: 600px;
+}
 
 .titulo{
   font-size: 40px;
+  text-align: center;
+  margin-bottom: 1rem;
 }
   
 .fundo {
@@ -17,79 +19,194 @@
     filter: blur(8px);
     z-index: 1;
 }
+
 .box{
   background-color: rgb(255, 255, 255);
-  width: 50%;
-  height: 80%;
+  width: 100%;
+  max-width: 600px;
+  min-height: 500px;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 55px;
-  padding-top: 4vh;
+  padding: 2rem;
   box-shadow: 15px 10px rgba(0, 0, 0, 0.255);
-  position: absolute;
-  top: 8rem;
-  
+  position: relative;
+  margin-top: 100px;
 }
+
 .quaseTudo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 20px;
 }
 
 .formulario {
   display: flex;
   flex-direction: column;
-  padding-top: 6vh;
-  row-gap: 10vh;
+  padding-top: 2rem;
+  gap: 1rem;
   width: 100%;
 }
+
 .campo {
-  border: 0cap;
+  border: 0;
   background-color: rgb(221, 221, 221);
   border-radius: 2vh;
-  height: 5vh;
-  width: 70%;
-  margin: auto;
-  font-size: 25px;
-  padding-left: 15px;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  font-size: 16px;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .campobotoes{
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .campobotoes2{
   background-color: var(--branco);
   border-radius: 15px;
-  margin: 2% 1%;
+  margin: 0;
 }
 
 .botao{
   border-radius: 15px;
-  border-color: rgba(255, 255, 255, 0);
-  margin: auto;
-  width: 40%;
-  height: 100%;
-  font-size: 20px;
+  border: none;
+  margin: 0;
+  width: 120px;
+  height: 45px;
+  font-size: 16px;
   color: var(--azul-escuro);
   background-color: var(--azul-claro);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.botao:hover {
+  background-color: var(--azul-escuro);
+  color: white;
 }
 
 .mensagem {
   resize: none;
-  border: 0cap;
+  border: 0;
   background-color: rgb(221, 221, 221);
   border-radius: 2vh;
-  font-size: 25px;
-  padding-left: 15px;
-  width: 70%;
-  height: 10rem;
-  margin: auto;
+  font-size: 16px;
+  padding: 15px;
+  width: 100%;
+  height: 120px;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 1024px) {
+  .box {
+    max-width: 550px;
+    padding: 1.5rem;
+  }
+  
+  .titulo {
+    font-size: 35px;
+  }
+  
+  .campo, .mensagem {
+    font-size: 15px;
+  }
+  
+  .campo {
+    height: 45px;
+  }
+  
+  .mensagem {
+    height: 110px;
+  }
+  
+  .botao {
+    font-size: 15px;
+    width: 110px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    max-width: 90%;
+    padding: 1rem;
+    margin-top: 80px;
+    border-radius: 30px;
+  }
+  
+  .titulo {
+    font-size: 30px;
+  }
+  
+  .campo, .mensagem {
+    font-size: 14px;
+  }
+  
+  .campo {
+    height: 40px;
+  }
+  
+  .mensagem {
+    height: 100px;
+  }
+  
+  .botao {
+    font-size: 14px;
+    width: 100px;
+    height: 35px;
+  }
+  
+  .quaseTudo {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 60px;
+    border-radius: 20px;
+  }
+  
+  .titulo {
+    font-size: 24px;
+  }
+  
+  .campo, .mensagem {
+    font-size: 13px;
+  }
+  
+  .campo {
+    height: 35px;
+  }
+  
+  .mensagem {
+    height: 90px;
+  }
+  
+  .botao {
+    font-size: 13px;
+    width: 90px;
+    height: 30px;
+  }
+  
+  .quaseTudo {
+    padding: 10px;
+  }
 }
 
   

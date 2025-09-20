@@ -1,11 +1,13 @@
 .tudo {
     position: relative;
-    height: 120vh;
-    
-  }
+    height: 100vh;
+    min-height: 600px;
+}
 
 .titulo{
   font-size: 40px;
+  text-align: center;
+  margin-bottom: 1rem;
 }
   
 .fundo {
@@ -17,34 +19,117 @@
     filter: blur(8px);
     z-index: 1;
 }
+
 .box{
   background-color: rgb(255, 255, 255);
-  width: 80%;
+  width: 100%;
+  max-width: 800px;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 55px;
-  padding-top: 4vh;
+  padding: 2rem;
   box-shadow: 15px 10px rgba(0, 0, 0, 0.255);
-  position: absolute;
-  top: 8rem;
-  
+  position: relative;
+  margin-top: 100px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
+
 .quaseTudo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 20px;
 }
 
 .titulo2{
   font-weight: 700;
-
+  font-size: 24px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .texto{
     font-weight: 400;
-    margin: 1% 5%;
+    margin: 1rem 0;
     text-indent: 2em;
+    line-height: 1.6;
+    text-align: justify;
+    font-size: 16px;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 1024px) {
+  .box {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+  
+  .titulo {
+    font-size: 35px;
+  }
+  
+  .titulo2 {
+    font-size: 22px;
+  }
+  
+  .texto {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    max-width: 95%;
+    padding: 1rem;
+    margin-top: 80px;
+    border-radius: 30px;
+  }
+  
+  .titulo {
+    font-size: 30px;
+  }
+  
+  .titulo2 {
+    font-size: 20px;
+  }
+  
+  .texto {
+    font-size: 14px;
+    text-indent: 1.5em;
+  }
+  
+  .quaseTudo {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 60px;
+    border-radius: 20px;
+  }
+  
+  .titulo {
+    font-size: 24px;
+  }
+  
+  .titulo2 {
+    font-size: 18px;
+  }
+  
+  .texto {
+    font-size: 13px;
+    text-indent: 1em;
+    line-height: 1.5;
+  }
+  
+  .quaseTudo {
+    padding: 10px;
+  }
 }
