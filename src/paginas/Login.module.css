@@ -125,6 +125,10 @@
   min-height: 20px;
 }
 
+.esqueceuSenha{
+  text-align: right;
+}
+
 /* Media queries para responsividade */
 @media (max-width: 1024px) {
   .box {

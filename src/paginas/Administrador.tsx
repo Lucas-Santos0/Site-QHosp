@@ -1,96 +1,125 @@
-import estilos from './Administrador.module.css'
-import { useNavigate} from 'react-router-dom';
+import estilos from './Administrador.module.css';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const schema = z.object({
-  email: z.string().email("Email inválido"),
-  senha: z.string().min(6, "Senha deve ter pelo menos 6 caracteres"),
+  nome: z.string().min(1, "Informe o nome do hospital"),
+  lotacao: z.string().min(1, "Informe o nível de lotação"),
+  localizacao: z.string().min(1, "Informe a localização"),
+  numeroFuncionarios: z.string().min(1, "Informe o número de funcionários"),
+  servicoDisponivel: z.string().min(1, "Informe os serviços disponíveis"),
+  codigoCnes: z.string().min(1, "Informe o código CNES"),
 });
 
 type FormData = z.infer<typeof schema>;
 
-export function Administrador(){
+export function Administrador() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     reset,
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
-  const navegação = useNavigate();
+  async function Verificacao(data: FormData) {
+    if (!auth.currentUser) {
+      alert('Você precisa estar logado para cadastrar um hospital');
+      return;
+    }
 
-  async function Verificacao(data: FormData){
+    const hospital = {
+      nome: data.nome,
+      lotacao: data.lotacao,
+      localizacao: data.localizacao,
+      numeroFuncionarios: data.numeroFuncionarios,
+      servicoDisponivel: data.servicoDisponivel,
+      codigoCnes: data.codigoCnes,
+      criadoEm: new Date(),
+      criadoPor: auth.currentUser.uid
+    };
+
     try {
-      const querySnapshot = await getDocs(collection(db, "usuarios"));
-
-      let devEncontrado = false;
-
-      querySnapshot.forEach((doc) => {
-        const desenvolvedores = doc.data();
-
-        if (desenvolvedores.email === data.email && desenvolvedores.senha === data.senha) {
-          devEncontrado = true;
-        }
-      });
-
-      if (devEncontrado) {
-        navegação("/sobre");
-      } else {
-        alert("Email ou senha inválidos");
-      }
-
+      const hospitaisCollection = collection(db, "Hospitais");
+      await addDoc(hospitaisCollection, hospital);
+      alert("Hospital cadastrado com sucesso!");
+      reset(); // limpa o formulário após envio
     } catch (error) {
-      console.error("Erro ao buscar dados:", error);
-      alert("Erro ao conectar com o banco de dados");
+      console.error("Erro ao cadastrar hospital:", error);
+      alert("Erro ao cadastrar hospital.");
     }
   }
 
-  return(
+  return (
     <div className={estilos.tudo}>
       <div className={estilos.fundo} />
 
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
-          <div className={estilos.titulo}>Administrador</div>
-          
+          <div className={estilos.titulo}>Cadastro de Hospital</div>
+
           <form className={estilos.formulario} onSubmit={handleSubmit(Verificacao)}>
-            <input
-              className={estilos.campo}
-              type="email"
-              placeholder="Email:"
-              {...register("email")}
-            />
-            <p className={estilos.mensagemErro}>{errors.email?.message || "‎"}</p>
 
             <input
+              type="text"
+              placeholder="Nome do Hospital"
+              {...register("nome")}
               className={estilos.campo}
-              type="password"
-              placeholder="Senha:"
-              {...register("senha")}
             />
-            <p className={estilos.mensagemErro}>{errors.senha?.message || "‎"}</p>
+            <p className={estilos.mensagemErro}>{errors.nome?.message || "‎"}</p>
+
+            <input
+              type="text"
+              placeholder="Nível de Lotação"
+              {...register("lotacao")}
+              className={estilos.campo}
+            />
+            <p className={estilos.mensagemErro}>{errors.lotacao?.message || "‎"}</p>
+
+            <input
+              type="text"
+              placeholder="Localização"
+              {...register("localizacao")}
+              className={estilos.campo}
+            />
+            <p className={estilos.mensagemErro}>{errors.localizacao?.message || "‎"}</p>
+
+            <input
+              type="number"
+              placeholder="Número de Funcionários"
+              {...register("numeroFuncionarios")}
+              className={estilos.campo}
+            />
+            <p className={estilos.mensagemErro}>{errors.numeroFuncionarios?.message || "‎"}</p>
+
+            <input
+              type="text"
+              placeholder="Serviços Disponíveis"
+              {...register("servicoDisponivel")}
+              className={estilos.campo}
+            />
+            <p className={estilos.mensagemErro}>{errors.servicoDisponivel?.message || "‎"}</p>
+
+            <input
+              type="text"
+              placeholder="Código CNES"
+              {...register("codigoCnes")}
+              className={estilos.campo}
+            />
+            <p className={estilos.mensagemErro}>{errors.codigoCnes?.message || "‎"}</p>
 
             <div className={estilos.campobotoes}>
-              <button
-                className={estilos.botao}
-                type="button"
-                onClick={() => reset()}
-              >
-                <div className={estilos.campobotoes2}>Limpar</div>
-              </button>
-              <button className={estilos.botao} type="submit">
-                Entrar
-              </button>
+              <button className={estilos.botao} type="submit">Salvar</button>
+              <button className={estilos.botao} type="button" onClick={() => reset()}>Limpar</button>
             </div>
+
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }

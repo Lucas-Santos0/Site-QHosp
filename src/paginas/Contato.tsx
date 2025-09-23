@@ -12,13 +12,13 @@ export function Contato(){
           <div className={estilos.titulo}>Contato </div>
           <form className={estilos.formulario}>
             <input className={estilos.campo}
-              placeholder="Email:"  />
+              placeholder="Insira seu Email:"  />
 
             <input className={estilos.campo}
-              placeholder="Assunto:"  />
+              placeholder="Insira motivo de Contato:"  />
 
             <textarea className={estilos.mensagem}
-              placeholder="Mensagem:"  />
+              placeholder="Insira uma Mensagem:"  />
 
             <div className={estilos.campobotoes}>
               <button className={estilos.botao}><div className={estilos.campobotoes2}>Limpar</div></button>

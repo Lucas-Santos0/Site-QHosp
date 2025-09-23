@@ -60,7 +60,7 @@ export function Login() {
       }
     }
   }
-
+  
   return (
     <div className={estilos.tudo}>
       <div className={estilos.fundo} />
@@ -84,6 +84,8 @@ export function Login() {
               {...register("senha")}
             />
             <p className={estilos.mensagemErro}>{errors.senha?.message || "‎"}</p>
+
+            <p className={estilos.esqueceuSenha}>Esqueceu sua senha?</p>
 
             <div className={estilos.campobotoes}>
               <button
