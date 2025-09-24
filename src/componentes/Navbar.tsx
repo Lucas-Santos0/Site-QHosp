@@ -50,18 +50,24 @@ export function Navbar() {
       </div>
 
       <div className={estilos.links}>
+
         {isAdmin ? (
           // Só mostra o link admin para admins
-          <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/administrador'}>Admin</NavLink>
+          <>
+            <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/cadHospital'}>Cadastro de Hospital</NavLink>
+            <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/editHospital'}>Editor de Hospital</NavLink>
+          </>
+
         ) : (
           // Usuário normal vê os links padrão
           <>
             <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/inicial'}>Início</NavLink>
-            <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/sobre'}>Sobre</NavLink>
-            <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/contato'}>Contato</NavLink>
             <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/ficha'}>Configuração</NavLink>
           </>
         )}
+
+        <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/sobre'}>Sobre</NavLink>
+        <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/contato'}>Contato</NavLink>
       </div>
 
       <div className={estilos.sair}>

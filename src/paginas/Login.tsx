@@ -43,7 +43,7 @@ export function Login() {
 
         // Redireciona conforme o campo 'adm'
         if (dadosUsuario.adm === true) {
-          navegação("/administrador");
+          navegação("/editHospital");
         } else {
           navegação("/inicial");
         }

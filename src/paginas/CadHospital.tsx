@@ -1,4 +1,4 @@
-import estilos from './Administrador.module.css';
+import estilos from './CadHospital.module.css';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +16,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export function Administrador() {
+export function CadHospital() {
   const {
     register,
     handleSubmit,
