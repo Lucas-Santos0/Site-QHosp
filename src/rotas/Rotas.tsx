@@ -8,16 +8,20 @@ import { Ficha_medica } from '../paginas/Ficha_medica'
 import { CadHospital } from '../paginas/CadHospital'
 import { EditHospital } from '../paginas/EditHosptial'
 import { Navbar } from '../componentes/Navbar'
+import { Rodape } from '../componentes/Rodape'
 import { Outlet } from 'react-router-dom';
 
 
 //mostrar navbar
 export function ComNavbar() {
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navbar />
-      <Outlet /> 
-    </>
+      <div style={{ flex: 1 }}>
+        <Outlet /> 
+      </div>
+      <Rodape />
+    </div>
   );
 }
 

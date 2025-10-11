@@ -62,7 +62,7 @@ export function Navbar() {
           // Usuário normal vê os links padrão
           <>
             <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/inicial'}>Início</NavLink>
-            <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/ficha'}>Configuração</NavLink>
+            <NavLink className={({ isActive }) => isActive ? estilos.linkActive : estilos.link} to={'/ficha'}>Prontuário</NavLink>
           </>
         )}
 

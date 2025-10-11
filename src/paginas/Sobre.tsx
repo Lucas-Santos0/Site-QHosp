@@ -5,48 +5,90 @@ export function Sobre() {
 
   return (
     <div className={estilos.tudo}>
-      <div className={estilos.fundo} />
+      {/* Banner principal azul */}
+      <div className={estilos.bannerPrincipal}>
+        <div className={estilos.bannerContent}>
+          <div className={estilos.bannerText}>
+            <h1 className={estilos.bannerTitle}>QHosp</h1>
+            <p className={estilos.bannerSubtitle}>
+              Transformando a gestão hospitalar e melhorando o acesso à saúde pública no Brasil
+            </p>
+            
+            <div className={estilos.bannerStats}>
+              </div>
+          </div>
+        </div>
+      </div>
 
+      {/* Seção de conteúdo */}
+      <div className={estilos.conteudoSection}>
+        <h2 className={estilos.sectionTitle}>Sobre o Projeto</h2>
+        
+        <div className={estilos.conteudoGrid}>
+          <div className={estilos.conteudoCard}>
+            <h3 className={estilos.cardTitle}>Missão</h3>
+            <p className={estilos.cardText}>
+              Contribuir para a melhoria da organização hospitalar, reduzindo a superlotação 
+              e facilitando o dia a dia de quem precisa frequentar esses ambientes.
+            </p>
+          </div>
 
-      <div className={estilos.quaseTudo}>
-        <div className={estilos.box}>
-          <div className={estilos.titulo}>Sobre</div>
+          <div className={estilos.conteudoCard}>
+            <h3 className={estilos.cardTitle}>Plataforma</h3>
+            <p className={estilos.cardText}>
+              Site voltado à gestão hospitalar e aplicativo direcionado ao suporte ao paciente, 
+              oferecendo informações úteis para uma tomada de decisão mais consciente.
+            </p>
+          </div>
 
-            <p className={estilos.texto}>O Qhosp é um projeto desenvolvido com o objetivo principal de contribuir para 
-            a melhoria da organização hospitalar, reduzindo a superlotação e facilitando o 
-            dia a dia de quem precisa frequentar esses ambientes. A proposta visa melhorar o
-            direcionamento dos usuários ao sistema de saúde e promover mais transparência 
-            na relação entre pacientes e hospitais.</p>
+          <div className={estilos.conteudoCard}>
+            <h3 className={estilos.cardTitle}>Benefícios</h3>
+            <p className={estilos.cardText}>
+              Reduzir deslocamentos desnecessários, aumentar a satisfação dos usuários, 
+              otimizar a gestão hospitalar e oferecer dados atualizados sobre ocupação e serviços.
+            </p>
+          </div>
+        </div>
+      </div>
 
-            <p className={estilos.texto}>A plataforma é composta por um site e um aplicativo integrados, cada um com 
-            funções específicas: o site é voltado à gestão hospitalar, permitindo maior 
-            controle e planejamento por parte das instituições, enquanto o aplicativo é 
-            direcionado ao suporte ao paciente, oferecendo informações úteis para uma 
-            tomada de decisão mais consciente.</p>
+      {/* Seção da equipe */}
+      <div className={estilos.equipeSection}>
+        <div className={estilos.equipeContent}>
+          <h2 className={estilos.equipeTitle}>Nossa Equipe</h2>
+          
+          <div className={estilos.equipeGrid}>
+            <div className={estilos.cardMembro}>
+              <div className={estilos.fotoMembro}>
+                <div className={estilos.placeholderFoto}>LM</div>
+              </div>
+              <h3 className={estilos.nomeMembro}>Lucas Maurício</h3>
+              <p className={estilos.cargoMembro}>Desenvolvedor</p>
+            </div>
 
-            <p className={estilos.texto}>A ideia surgiu diante da crescente superlotação nos hospitais públicos, que 
-            afeta a qualidade do atendimento e a eficiência dos serviços de saúde. Com o 
-            Qhosp, pretende-se reduzir deslocamentos desnecessários, aumentar a satisfação 
-            dos usuários, otimizar a gestão hospitalar e oferecer dados atualizados sobre 
-            ocupação, localização de hospitais, número de funcionários disponíveis, serviços 
-            oferecidos, horários de pico, comentários de usuários, entre outros.</p>
+            <div className={estilos.cardMembro}>
+              <div className={estilos.fotoMembro}>
+                <div className={estilos.placeholderFoto}>LS</div>
+              </div>
+              <h3 className={estilos.nomeMembro}>Lucas Santos</h3>
+              <p className={estilos.cargoMembro}>Desenvolvedor</p>
+            </div>
 
-            <p className={estilos.texto}>O público-alvo inclui tanto os usuários do SUS quanto gestores e profissionais 
-            das instituições hospitalares, tornando o projeto relevante e aplicável ao 
-            contexto atual da saúde pública brasileira.</p>
+            <div className={estilos.cardMembro}>
+              <div className={estilos.fotoMembro}>
+                <div className={estilos.placeholderFoto}>MP</div>
+              </div>
+              <h3 className={estilos.nomeMembro}>Mariana Patrício</h3>
+              <p className={estilos.cargoMembro}>Desenvolvedora</p>
+            </div>
 
-            <p className={estilos.texto}>Com o Qhosp, as visitas aos hospitais tornam-se menos estressantes e muito mais informadas!!</p>
-
-            <p className={estilos.titulo2}>Desenvolvido por:</p>
-
-           
-           <ul>
-              <li>Lucas Maurício</li>
-              <li>Lucas Santos</li>
-              <li>Mariana Patrício</li>
-              <li>Olivia Atanagildo</li>
-          </ul>
-
+            <div className={estilos.cardMembro}>
+              <div className={estilos.fotoMembro}>
+                <div className={estilos.placeholderFoto}>OA</div>
+              </div>
+              <h3 className={estilos.nomeMembro}>Olivia Atanagildo</h3>
+              <p className={estilos.cargoMembro}>Desenvolvedora</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

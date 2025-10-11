@@ -1,135 +1,464 @@
 .tudo {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--cinza-claro) 0%, var(--branco) 100%);
+  padding-top: 100px; /* Espaço para a navbar fixa */
+  padding-bottom: 2rem; /* Espaço para o rodapé */
 }
 
-.titulo{
-  font-size: 40px;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-  
-.fundo {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url("../assets/bg.jpeg");
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: 1;
+/* Banner principal azul */
+.bannerPrincipal {
+  background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-escuro) 100%);
+  color: var(--branco);
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.box{
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  max-width: 800px;
-  z-index: 3;
+.bannerPrincipal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.bannerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.bannerText {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 55px;
-  padding: 2rem;
-  box-shadow: 15px 10px rgba(0, 0, 0, 0.255);
-  position: relative;
-  margin-top: 100px;
-  max-height: 80vh;
-  overflow-y: auto;
+  gap: 1.5rem;
 }
 
-.quaseTudo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
-}
-
-.titulo2{
+.bannerTitle {
+  font-size: 3rem;
   font-weight: 700;
-  font-size: 24px;
-  margin-bottom: 1rem;
+  margin: 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--branco) 0%, var(--verde-claro) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bannerSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.bannerStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.statItem {
   text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.texto{
-    font-weight: 400;
-    margin: 1rem 0;
-    text-indent: 2em;
-    line-height: 1.6;
-    text-align: justify;
-    font-size: 16px;
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--verde-claro);
+  margin: 0;
+  line-height: 1;
 }
 
-/* Media queries para responsividade */
+.statLabel {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Seção de conteúdo */
+.conteudoSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-escuro) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.conteudoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.conteudoCard {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cinza-medio);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.conteudoCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--azul-principal) 0%, var(--verde-principal) 100%);
+}
+
+.conteudoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--azul-principal);
+  margin: 0 0 1rem 0;
+}
+
+.cardText {
+  color: var(--cinza-escuro);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Seção da equipe */
+.equipeSection {
+  background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-escuro) 100%);
+  color: var(--branco);
+  padding: 4rem 2rem;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.equipeSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.equipeContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.equipeTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, var(--branco) 0%, var(--verde-claro) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.equipeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.cardMembro {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardMembro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardMembro:hover::before {
+  opacity: 1;
+}
+
+.cardMembro:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.fotoMembro {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-escuro) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholderFoto {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--branco);
+}
+
+.nomeMembro {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--branco);
+}
+
+.cargoMembro {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin: 0;
+  color: var(--verde-claro);
+}
+
+/* Responsividade */
 @media (max-width: 1024px) {
-  .box {
-    max-width: 90%;
-    padding: 1.5rem;
+  .bannerContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
   }
   
-  .titulo {
-    font-size: 35px;
+  .bannerTitle {
+    font-size: 2.5rem;
   }
   
-  .titulo2 {
-    font-size: 22px;
+  .bannerStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
-  .texto {
-    font-size: 15px;
+  .conteudoGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .equipeGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .box {
-    max-width: 95%;
+  .bannerPrincipal {
+    padding: 3rem 1.5rem;
+  }
+  
+  .bannerTitle {
+    font-size: 2rem;
+  }
+  
+  .bannerSubtitle {
+    font-size: 1rem;
+  }
+  
+  .bannerStats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .statItem {
     padding: 1rem;
-    margin-top: 80px;
-    border-radius: 30px;
   }
   
-  .titulo {
-    font-size: 30px;
+  .statNumber {
+    font-size: 2rem;
   }
   
-  .titulo2 {
-    font-size: 20px;
+  .conteudoSection {
+    padding: 0 1.5rem;
   }
   
-  .texto {
-    font-size: 14px;
-    text-indent: 1.5em;
+  .sectionTitle {
+    font-size: 2rem;
   }
   
-  .quaseTudo {
-    padding: 15px;
+  .conteudoCard {
+    padding: 1.5rem;
+  }
+  
+  .equipeSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .equipeTitle {
+    font-size: 2rem;
+  }
+  
+  .equipeGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cardMembro {
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .box {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 60px;
-    border-radius: 20px;
+  .bannerPrincipal {
+    padding: 2rem 1rem;
   }
   
-  .titulo {
-    font-size: 24px;
+  .bannerTitle {
+    font-size: 1.8rem;
   }
   
-  .titulo2 {
-    font-size: 18px;
+  .bannerSubtitle {
+    font-size: 0.9rem;
   }
   
-  .texto {
-    font-size: 13px;
-    text-indent: 1em;
-    line-height: 1.5;
+  .statNumber {
+    font-size: 1.8rem;
   }
   
-  .quaseTudo {
-    padding: 10px;
+  .conteudoSection {
+    padding: 0 1rem;
   }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .conteudoCard {
+    padding: 1rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+  
+  .equipeSection {
+    padding: 2rem 1rem;
+  }
+  
+  .equipeTitle {
+    font-size: 1.8rem;
+  }
+  
+  .cardMembro {
+    padding: 1rem;
+  }
+  
+  .fotoMembro {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .placeholderFoto {
+    font-size: 1.2rem;
+  }
+  
+  .nomeMembro {
+    font-size: 1.1rem;
+  }
+  
+  .cargoMembro {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bannerContent,
+.conteudoCard,
+.cardMembro {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.bannerContent {
+  animation-delay: 0.1s;
+}
+
+.conteudoCard:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.conteudoCard:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.conteudoCard:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.cardMembro:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.cardMembro:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.cardMembro:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.cardMembro:nth-child(4) {
+  animation-delay: 0.4s;
 }

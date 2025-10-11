@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Carrossel } from '../componentes/Carrossel';
 
 export function Inicial() {
   const schema = z.object({
@@ -172,13 +173,28 @@ export function Inicial() {
     }
   }
 
+  // Imagens de exemplo para o carrossel
+  const imagensCarrossel = [
+    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba0ef4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  ];
+
   return (
     <div className={estilos.tudo}>
-      <div className={estilos.fundo} />
+      {/* Carrossel */}
+      <div className={estilos.carrosselSection}>
+        <Carrossel 
+          imagens={imagensCarrossel}
+          autoplay={true}
+          intervalo={4000}
+        />
+      </div>
 
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
-          <div className={estilos.titulo}>Inicial</div>
+          <div className={estilos.titulo}>Qual Hospital?</div>
 
           <form onSubmit={handleSubmit(verificarEstabelecimento)}>
             <textarea className={estilos.areaTexto} {...register("localizacao")} placeholder="Digite o nome do municipio"></textarea>

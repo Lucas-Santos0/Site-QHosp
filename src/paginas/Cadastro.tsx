@@ -71,8 +71,7 @@ export function Cadastro() {
 
   return (
     <div className={estilos.tudo}>
-      <div className={estilos.fundo} />
-              <NavLink to={'/'}><FaArrowLeft  className={estilos.voltar}/></NavLink>
+      <NavLink to={'/'}><FaArrowLeft  className={estilos.voltar}/></NavLink>
 
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>

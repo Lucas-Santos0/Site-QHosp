@@ -1,22 +1,39 @@
 :root {
-    --azul-claro: #7ebec4;
-    --azul-escuro: #2f7980;
-    --preto: #000;
-    --branco: #fff;
-    
+    /* Cores inspiradas no site da Hapvida */
+    --azul-principal: #1e3a8a;
+    --azul-claro: #3b82f6;
+    --azul-escuro: #1e40af;
+    --verde-principal: #10b981;
+    --verde-claro: #34d399;
+    --verde-escuro: #059669;
+    --branco: #ffffff;
+    --cinza-claro: #f8fafc;
+    --cinza-medio: #e2e8f0;
+    --cinza-escuro: #64748b;
+    --preto: #1e293b;
+    --sombra: rgba(0, 0, 0, 0.1);
+    --sombra-hover: rgba(0, 0, 0, 0.15);
 }
 
 *{
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 500;
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: var(--branco);
+    color: var(--preto);
+    line-height: 1.6;
 }
+
+/* Importar fonte Inter do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Media queries para responsividade */
 @media (max-width: 768px) {

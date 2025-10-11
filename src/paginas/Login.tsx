@@ -63,8 +63,6 @@ export function Login() {
   
   return (
     <div className={estilos.tudo}>
-      <div className={estilos.fundo} />
-
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
           <div className={estilos.titulo}>Login</div>
