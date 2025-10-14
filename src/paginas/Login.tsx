@@ -83,7 +83,9 @@ export function Login() {
             />
             <p className={estilos.mensagemErro}>{errors.senha?.message || "‎"}</p>
 
-            <p className={estilos.esqueceuSenha}>Esqueceu sua senha?</p>
+            <NavLink className={estilos.esqueceuSenha} to={'/esqueceuSenha'}>
+              <p className={estilos.esqueceuSenhatxt}>Esqueceu sua senha?</p>
+            </NavLink>
 
             <div className={estilos.campobotoes}>
               <button

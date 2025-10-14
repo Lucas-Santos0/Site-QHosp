@@ -10,6 +10,8 @@ import { EditHospital } from '../paginas/EditHosptial'
 import { Navbar } from '../componentes/Navbar'
 import { Rodape } from '../componentes/Rodape'
 import { Outlet } from 'react-router-dom';
+import {EsqueceuSenha} from '../paginas/EsqueceuSenha'
+import {RedefinirSenha} from '../paginas/RedefinirSenha'
 
 
 //mostrar navbar
@@ -33,7 +35,9 @@ export function Rotas(){
         {/* Rotas sem Navbar */}
         <Route path='/' element={< Login/>} />
         <Route path='/cadastro' element={<Cadastro />} />
-
+        <Route path='/esqueceuSenha' element={<EsqueceuSenha/>} />
+        <Route path='/redefinirSenha' element={<RedefinirSenha/>} />
+        
         {/* Rotas com Navbar */}
         <Route element={<ComNavbar />} >
           <Route path='/inicial' element={<Inicial/>} />
@@ -42,6 +46,7 @@ export function Rotas(){
           <Route path='/cadHospital' element={<CadHospital/>} />
           <Route path='/editHospital' element={<EditHospital/>} />
           <Route path='/ficha' element={<Ficha_medica/>} />
+          
         </Route>
       </Routes>
     </BrowserRouter>

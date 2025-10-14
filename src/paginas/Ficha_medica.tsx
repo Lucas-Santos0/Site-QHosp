@@ -123,7 +123,9 @@ function waitForUser() {
       <div className={estilos.quaseTudo}>
         <div className={estilos.box}>
           <div className={estilos.titulo}>Ficha médica</div>
-
+          <p>Nome</p>
+          <p>cpf</p>
+          <p>email</p>
           <form className={estilos.formulario} onSubmit={handleSubmit(Verificacao)}>
             <input
               type="date"

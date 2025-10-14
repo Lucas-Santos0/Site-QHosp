@@ -208,8 +208,14 @@
   min-height: 20px;
 }
 
-.esqueceuSenha{
+.esqueceuSenha {
   text-align: right;
+  text-decoration: none;  
+}
+
+.esqueceuSenhatxt { 
+  color: var(--preto); 
+  font-weight: 500;
 }
 
 @media (max-width: 1024px) {

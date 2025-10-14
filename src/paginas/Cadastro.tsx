@@ -7,6 +7,7 @@ import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from "firebase/firestore";
 import { FaArrowLeft } from "react-icons/fa";
+import { sendEmailVerification } from "firebase/auth";
 
 
 const schema = z.object({
