@@ -3,8 +3,6 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
 import { FaArrowLeft } from "react-icons/fa";
 
 const schema = z
@@ -31,18 +29,44 @@ export function RedefinirSenha() {
 
   const navegar = useNavigate();
   const { state } = useLocation();
-  const usuario = state?.usuario;
+  const email = state?.email;
+  const code = state?.code;
 
-  if (!usuario) {
+  if (!email || !code) {
     return (
       <div className={estilos.tudo}>
-        <p>Erro: Nenhum usuário encontrado. Volte e tente novamente.</p>
+        <p>Erro: Dados insuficientes. Volte e tente novamente.</p>
         <NavLink to="/">Voltar</NavLink>
       </div>
     );
   }
 
   async function Verificacao(data: FormData) {
+    try {
+      const response = await fetch("http://localhost:5000/reset-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          code,
+          newPassword: data.senha,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message || "Senha redefinida com sucesso!");
+        navegar("/");
+      } else {
+        alert(result.error || "Erro ao redefinir sua Senha :( \nTente Novamente mais tarde!");
+        navegar("/");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao redefinir sua Senha :( \nTente Novamente mais tarde!");
+      navegar("/");
+    }
   }
 
   return (
